@@ -19,10 +19,10 @@ RUN npm run build
 # 使用 Nginx 镜像作为生产环境镜像
 FROM nginx:latest
 
-# 复制构建阶段生成的静态文件到 Nginx 默认的静态文件目录
+# 复制构建阶段生成的静态文件到 Nginx 默认的静态文件目录 
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 # nginx配置文件
-COPY nginx-docker/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx_docker/default.conf /etc/nginx/conf.d/default.conf
 
 # 暴露 Nginx 默认的 HTTP 端口
 EXPOSE 80
