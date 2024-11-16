@@ -16,9 +16,9 @@ jobs:
         uses: docker/login-action@v3.1.0
         with:
           username: zym1614511838@gmail.com
-          password: zhongyiming2003	  
-	
-	
+          password: zhongyiming2003
+
+
       - name: 构建镜像
         run:
           docker build -t registry.cn-hangzhou.aliyuncs.com/lazyyy1/eshop_frontend .
