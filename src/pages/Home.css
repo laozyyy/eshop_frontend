@@ -1,0 +1,25 @@
+/* 只保留 Home 页面特有的样式，其他通用样式已在 App.css 中定义 */
+
+/* 如果需要覆盖某些特定样式，可以在这里添加 */
+
+.header {
+  /* 其他样式 */
+}
+
+.nav-container {
+  /* 其他样式 */
+}
+
+.nav-menu {
+  /* 其他样式 */
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* 其他样式 */ 

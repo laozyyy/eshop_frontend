@@ -1,0 +1,123 @@
+.cart {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+.cart.floating {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  width: 350px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+/* 添加一个小三角形指示器 */
+.cart.floating:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white;
+}
+
+.cart h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+.cart-item {
+  display: flex;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item h3 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.cart-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.cart-item input {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 5px 10px;
+}
+
+.cart-item button {
+  padding: 5px 10px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.cart-item button:hover {
+  background-color: #ff2222;
+}
+
+.cart-total {
+  margin-top: 20px;
+  text-align: right;
+  padding-top: 15px;
+  border-top: 2px solid #f0f0f0;
+}
+
+.cart-total h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.cart-total button {
+  padding: 10px 25px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.cart-total button:hover {
+  background-color: #45a049;
+}
+
+.empty-cart {
+  text-align: center;
+  color: #666;
+  padding: 20px 0;
+} 

@@ -1,0 +1,35 @@
+.user-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 居中对齐 */
+    padding: 20px; /* 添加内边距 */
+    margin-top: 80px; /* 添加顶部间距，确保不被顶栏遮挡 */
+    background: rgba(255, 255, 255, 0.95); /* 背景颜色与项目主题一致 */
+    backdrop-filter: blur(10px); /* 背景模糊效果 */
+    border-radius: 20px; /* 圆角 */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+  }
+
+.user-profile-content {
+  text-align: center; /* 内容居中 */
+}
+
+.user-profile-title {
+  color: var(--primary-color); /* 使用主题颜色 */
+  margin: 20px 0; /* 添加上下间距 */
+  font-size: 24px; /* 增加字体大小 */
+}
+
+.user-avatar-profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 2px solid var(--primary-color); /* 添加边框 */
+}
+
+.user-info {
+  font-size: 18px;
+  color: var(--text-color); /* 使用主题文本颜色 */
+  margin-top: 10px; /* 添加顶部间距 */
+}
