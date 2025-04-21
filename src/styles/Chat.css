@@ -1,0 +1,223 @@
+.chat-page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.chat-main {
+  padding: 100px 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: calc(100vh - 140px); 
+}
+
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 20px;
+  background: #f0f2f5;
+  max-height: calc(100vh - 280px); /* 新增动态高度计算 */
+  min-height: 300px;
+}
+
+/* 保留原有输入区域样式 */
+.message-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  margin-top: auto;
+  background: white; /* 新增背景色 */
+}
+
+.chat-container {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  height: 120%; /* 修改min-height为height */
+}
+
+/* 消息列表 */
+.chat-list {
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+}
+
+.chat-list-header {
+  padding-bottom: 10px;
+}
+
+.chat-item {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease; /* 增加过渡效果 */
+  background: white; /* 默认背景设为白色 */
+}
+
+.chat-item:hover {
+  background: #f8f9fa; /* 保持原有悬停效果 */
+}
+
+.chat-item.active {
+  background: #e9ecef; /* 加深选中状态颜色 */
+  box-shadow: inset 3px 0 0 var(--primary-color); /* 增加左侧高亮条 */
+}
+
+/* 消息窗口 */
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 20px;
+  background: #f0f2f5;
+}
+
+.message-bubble {
+  max-width: 70%;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.message-bubble.me {
+  margin-left: auto;
+  margin-right: 0;
+  flex-direction: row-reverse;
+}
+
+.message-bubble.me .message-time {
+  color: rgba(255,255,255,0.8); /* 使用半透明白色 */
+}
+
+.message-bubble.me .message-content {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 15px 5px 15px 15px;
+}
+
+.message-content {
+  background: white;
+  padding: 12px 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.message-bubble.me .message-content {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* 输入区域 */
+.message-input-area {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  border-top: 1px solid #eee;
+  margin-top: auto; /* 新增关键属性 */
+}
+
+.message-input-area input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+.send-button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .chat-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .chat-list {
+    display: none;
+  }
+}
+
+.chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid var(--primary-color);
+}
+
+/* 聊天窗口头部头像 */
+.chat-header .chat-avatar {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.chat-header h3 {
+  margin-bottom: 15px;
+}
+
+/* 保持与<mcsymbol name="Header" filename="Header.js" path="src/components/Header.js" startline="7" type="function">Header组件</mcsymbol>用户头像一致 */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.unread-badge {
+  background: #ff4d4f;
+  color: white;
+  font-size: 12px;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chat-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto; /* 推动整个容器靠右 */
+  padding-left: 10px; /* 添加与左侧内容的间距 */
+}
+
+.chat-time {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.message-content p {
+  font-size: 1.1em;  /* 从默认1em放大到1.1em */
+  margin-bottom: 4px;
+}
+
+.message-time {
+  font-size: 0.85em;  /* 从0.9em缩小 */
+  color: #999;        /* 颜色减淡 */
+  display: block;
+}

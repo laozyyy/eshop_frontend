@@ -5,11 +5,11 @@ import { useCart } from '../contexts/CartContext';
 import '../styles/CartIcon.css';
 
 export function CartIcon() {
-  const { cartItems } = useCart();
+  const { cartItems, refreshCart } = useCart();
+  // 在reduce前添加空值判断
   const [showCart, setShowCart] = useState(false);
   const navigate = useNavigate();
-  
-  const itemCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const itemCount = (cartItems || []).reduce((sum, item) => sum + item.quantity, 0);
   
   const handleMouseEnter = () => {
     setShowCart(true);
@@ -19,6 +19,10 @@ export function CartIcon() {
     setShowCart(false);
   };
   
+  const handleCartClick = () => {
+    window.location.href = '/cart'; // 强制刷新页面
+  };
+
   return (
     <div 
       className="cart-icon-container"
@@ -27,7 +31,7 @@ export function CartIcon() {
     >
       <div 
         className="cart-icon"
-        onClick={() => navigate('/cart')}
+        onClick={handleCartClick}  // 使用新的点击处理器
         title="点击查看购物车页面"
       >
         <i className="fas fa-shopping-cart"></i>
@@ -36,4 +40,4 @@ export function CartIcon() {
       {showCart && <Cart isFloating={true} />}
     </div>
   );
-} 
+}

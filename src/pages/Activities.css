@@ -1,0 +1,135 @@
+.activities-container {
+  /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
+  min-height: 100vh;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* 复用登录页的卡片样式 */
+.lottery-section, .seckill-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05)
+}
+
+/* 复用首页的商品网格布局 */
+.prize-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* 复用商品卡片样式 */
+.prize-card {
+  background: white;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.seckill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 20px; */
+}
+
+/* 新增 seckill-item 样式 */
+.seckill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 调整倒计时样式 */
+.countdown {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #c62828;
+  font-weight: bold;
+}
+.lottery-section .product-card,
+.seckill-section .product-card {
+  background: #fff;
+    border-radius: 8px;  /* 缩小圆角 */
+    padding: 12px;      /* 减小内边距 */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* 更柔和的阴影 */
+    transition: transform 0.3s ease;
+    max-width: 200px;    /* 限制最大宽度 */
+    margin: 0 0;      
+}
+/* 如果需要等比缩小内部元素 */
+.lottery-section .product-card img,
+.seckill-section .product-card img {
+  height: 120px;       /* 缩小图片高度 */
+  object-fit: cover;
+}
+/* 新增秒杀商品包装样式 */
+.seckill-product-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.seckill-countdown-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #c62828;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  z-index: 1;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
+
+/* 秒杀模块商品网格布局 */
+.seckill-section .product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 一行显示 4 个卡片 */
+  gap: 20px; /* 卡片之间的间距 */
+}
+
+/* 抽奖模块商品网格布局 */
+.lottery-section .prize-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 一行显示 4 个卡片 */
+  gap: 20px; /* 卡片之间的间距 */
+}
+
+/* 商品卡片样式，可根据需要调整卡片大小 */
+.seckill-section .seckill-item,
+.lottery-section .prize-card {
+  width: 100%; /* 卡片宽度占满网格单元 */
+}
+
+.seckill-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.seckill-btn:hover {
+  background: #ff0000;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(255, 68, 68, 0.2);
+}

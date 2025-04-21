@@ -1,41 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useUser } from '../contexts/UserContext';
 import Header from '../components/Header';
 import './UserProfile.css';
 import { useNavigate } from 'react-router-dom';
 
 function UserProfile() {
-  const { userAvatar } = useUser();
-  const navigate = useNavigate();
+    const [userData, setUserData] = useState(null); // 新增用户数据状态
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-  const handleLogout = () => {
-    const confirmLogout = window.confirm("您确定要登出吗？");
-    if (confirmLogout) {
-      localStorage.removeItem('userToken'); // 清除用户令牌
-      localStorage.removeItem('userName'); // 清除用户名
-      localStorage.removeItem('userEmail'); // 清除用户邮箱
-      localStorage.removeItem('userAvatar'); // 清除用户头像
-      window.location.reload(); // 强制刷新页面
-    }
-  };
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const uid = localStorage.getItem('uid');
+            if (!uid) {
+                navigate('/login');
+                return;
+            }
 
-  return (
-    <div>
-      <Header />
-      <div className="user-profile-container">
-        <div className="user-profile-content">
-          {userAvatar && <img src={userAvatar} alt="用户头像" className="user-avatar-profile" />}
-          <h1 className="user-profile-title">用户个人信息</h1>
-          <div className="user-info">
-            <h2>用户名: {localStorage.getItem('userName') || '未设置'}</h2>
-            <p>邮箱: {localStorage.getItem('userEmail') || '未设置'}</p>
-            {/* 其他用户信息可以在这里显示 */}
-          </div>
-          <button className="logout-button" onClick={handleLogout}>登出</button>
+            try {
+                const response = await fetch(`http://117.72.72.114:9000/api/v1/user/get/${uid}`);
+                const { code, info, user } = await response.json();
+                
+                if (info === "success") {
+                    setUserData(user);
+                } else {
+                    setError('获取用户信息失败: ' + info);
+                }
+            } catch (err) {
+                setError('网络请求异常: ' + err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    const handleLogout = () => {
+        const confirmLogout = window.confirm("您确定要登出吗？");
+        if (confirmLogout) {
+            localStorage.removeItem('userToken'); 
+            localStorage.removeItem('uid'); 
+            localStorage.removeItem('cart'); 
+            navigate('/');
+            window.location.reload(); 
+        }
+    };
+
+    // 新增角色类型转换
+    const getRoleName = (role) => {
+        const roles = {
+            '-1': '买家',
+            '2': '卖家',
+            '3': '管理员'
+        };
+        return roles[role] || '未知角色';
+    };
+
+    return (
+        <div>
+            <Header />
+            <div className="user-profile-container">
+                <div className="user-profile-content">
+                    <h1 className="user-profile-title">用户个人信息</h1>
+                    
+                    {loading ? (
+                        <div className="loading">加载中...</div>
+                    ) : error ? (
+                        <div className="error">{error}</div>
+                    ) : (
+                        <div className="user-info">
+                            <h2>用户名: {userData.name}</h2>
+                            <p>电子邮箱: {userData.email || '未设置'}</p>
+                            <p>手机号码: {userData.phone || '未设置'}</p>
+                        </div>
+                    )}
+                    
+                    <button className="logout-button" onClick={handleLogout}>登出</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
-export default UserProfile; 
+export default UserProfile;

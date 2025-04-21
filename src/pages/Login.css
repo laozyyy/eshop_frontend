@@ -119,5 +119,26 @@
 }
 
 .forgot-password-btn:hover {
+
     color: #45a049;
-} 
+}
+
+/* 新增验证码按钮样式 */
+.captcha-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 12px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 调整验证码输入框padding */
+.form-input[type="tel"], 
+.form-input[type="text"] {
+  padding-right: 100px;
+}

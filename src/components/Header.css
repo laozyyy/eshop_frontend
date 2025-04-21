@@ -12,6 +12,11 @@
   display: flex;
   gap: 30px;
   align-items: center;
+  
+}
+
+.nav-item {
+  font-weight: 600;
 }
 
 .user-avatar {
@@ -20,4 +25,16 @@
   border-radius: 50%;
   margin-left: 10px;
   vertical-align: middle;
-} 
+}
+
+/* 新增一个类名，假设 primary 色已经定义 */
+.nav-item-primary {
+  color: var(--primary-color); /* 假设 primary 色通过 CSS 变量定义 */
+}
+
+/* 新增选中状态样式 */
+.nav-item-active {
+  color: var(--primary-color);
+  /* 你可以根据需求添加其他样式，如背景色、下划线等 */
+  text-decoration: underline;
+}

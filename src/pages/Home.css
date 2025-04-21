@@ -2,18 +2,6 @@
 
 /* 如果需要覆盖某些特定样式，可以在这里添加 */
 
-.header {
-  /* 其他样式 */
-}
-
-.nav-container {
-  /* 其他样式 */
-}
-
-.nav-menu {
-  /* 其他样式 */
-}
-
 .user-avatar {
   width: 40px;
   height: 40px;
@@ -22,4 +10,73 @@
   vertical-align: middle;
 }
 
-/* 其他样式 */ 
+.expand-arrow-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* 调整按钮与目录列表的间隔 */
+}
+
+.expand-arrow {
+  margin-bottom: 30px; 
+  text-align: center;
+  cursor: pointer;
+  color: #007bff;
+  font-size: 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background-color: #fff; /* 背景颜色 */
+  padding: 10px 20px; /* 内边距 */
+  border-radius: 5px; /* 圆角 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 阴影 */
+}
+
+.expand-arrow:hover {
+  color: #0056b3;
+  transform: scale(1.1);
+}
+
+.category-list {
+  max-height: 220px;
+  transition: max-height 0.3s cubic-bezier(0.35, 0, 0.29, 1.01); /* 展开动画 */
+  /* 保留 App.css 中的其他样式 */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.category-list.expanded {
+  max-height: 560px;
+  transition: max-height 0.3s cubic-bezier(0.35, 0, 0.29, 1.01); /* 收起动画 */
+}
+/* 其他样式 */
+
+.search-box {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 50px 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.search-button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+}
+
+.category-list-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}

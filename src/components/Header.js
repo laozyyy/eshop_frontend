@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { CartIcon } from './CartIcon';
 import { useUser } from '../contexts/UserContext';
 import './Header.css'; // 如果需要样式
 
 function Header() {
-  const { userAvatar } = useUser();
+  const { user } = useUser();
+  const location = useLocation();
 
   return (
     <header className="header">
@@ -15,19 +16,50 @@ function Header() {
           校园二手市场
         </Link>
         <div className="nav-menu">
-          <Link to="/" className="nav-item">首页</Link>
-          <Link to="/categories" className="nav-item">分类</Link>
-          <Link to="/publish" className="nav-item">发布</Link>
-          <Link to="/messages" className="nav-item">消息</Link>
+          <Link
+            to="/"
+            className={`nav-item ${location.pathname === '/' ? 'nav-item-active' : ''}`}
+            style={{ fontWeight: 600 }}
+          >
+            首页
+          </Link>
+          <Link
+            to="/categories"
+            className={`nav-item ${location.pathname === '/categories' ? 'nav-item-active' : ''}`}
+            style={{ fontWeight: 600 }}
+          >
+            分类
+          </Link>
+          <Link
+            to="/activities"
+            className={`nav-item nav-item-primary ${location.pathname === '/activities' ? 'nav-item-active' : ''}`}
+            style={{ fontWeight: 600 }}
+          >
+            活动
+          </Link>
+          {localStorage.getItem('uid') && (
+            <Link
+            to="/chat"
+            className={`nav-item ${location.pathname === '/chat' ? 'nav-item-active' : ''}`}
+            style={{ fontWeight: 600 }}
+          >
+            消息
+          </Link>
+          )}
           <div className="nav-item">
             <CartIcon />
           </div>
-          {userAvatar ? (
+          {localStorage.getItem('uid') ? (
             <Link to="/profile">
-              <img src={userAvatar} alt="用户头像" className="user-avatar" />
+              <img src={user?.avatar} alt="用户头像" className="user-avatar" />
             </Link>
           ) : (
-            <Link to="/login" className="nav-item">登录/注册</Link>
+            <Link
+              to="/login"
+              className={`nav-item ${location.pathname === '/login' ? 'nav-item-active' : ''}`}
+            >
+              登录/注册
+            </Link>
           )}
         </div>
       </nav>
@@ -35,4 +67,4 @@ function Header() {
   );
 }
 
-export default Header; 
+export default Header;

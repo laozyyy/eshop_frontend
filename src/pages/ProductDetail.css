@@ -1,9 +1,130 @@
 .product-large-card {
-  background: white;
+  background: rgb(253, 253, 253);
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   position: relative;
-  display: flex; /* 使用 flex 布局 */
-  padding: 220px;
+  display: flex;
+  gap: 20px; /* 添加间距 */
+  padding: 0px; /* 调整内边距 */
+  min-height: 550px;
+}
+
+/* 新增图片容器样式 */
+.product-large-card > div:first-child {
+  flex: 2; /* 左侧占2份 */
+  /* overflow: hidden; 保持图片比例 */
+  padding: 40px;
+  text-align: center; /* 新增居中定位 */
+}
+
+.product-large-card img {
+  width: 80%; /* 设置图片宽度为容器80% */
+  height: auto;
+  object-fit: cover;
+  display: inline-block; /* 确保居中生效 */
+}
+
+/* 新增商品信息容器样式 */
+.product-large-card > div:last-child {
+  flex: 3; /* 右侧占3份 */
+  padding: 40px;
+}
+
+.product-price{
+  font-size: 32px;
+}
+.product-price-left{
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 5px;
+  white-space: pre;
+}
+.product-name{
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* 新增价格容器样式 */
+.price-container {
+  background: #f5f5f5;
+  padding: 18px 15px;
+  border-radius: 4px;
+  margin: 15px 0;
+}
+
+/* 信息行样式 */
+.info-row {
+  display: flex;
+  gap: 25px;
+  color: #666;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+/* 规格选择器 */
+.spec-selector {
+  margin: 25px 0;
+  width: 100%;
+}
+.spec-selector select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 60%;
+}
+
+/* 数量选择器 */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 25px 0;
+}
+.quantity-selector button {
+  padding: 5px 12px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  cursor: pointer;
+}
+/* 修改数量输入框样式 */
+.quantity-selector input {
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  -moz-appearance: textfield; /* 隐藏Firefox的箭头 */
+}
+
+/* 隐藏所有浏览器的数字输入框箭头 */
+.quantity-selector input::-webkit-outer-spin-button,
+.quantity-selector input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 优化按钮交互 */
+.quantity-selector button {
+  padding: 5px 15px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.quantity-selector button:hover {
+  background: #e6e6e6;
+}
+
+/* 加入购物车按钮 */
+.add-to-cart {
+  background: #1677ff;
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.add-to-cart:hover {
+  background: #4096ff;
 }
