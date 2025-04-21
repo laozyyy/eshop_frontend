@@ -20,7 +20,7 @@ RUN npm run build
 FROM nginx:latest
 
 # 复制构建阶段生成的静态文件到 Nginx 默认的静态文件目录 
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build-stage /app/build /usr/share/nginx/html
 # nginx配置文件
 COPY nginx_conf/default.conf /etc/nginx/conf.d/default.conf
 
